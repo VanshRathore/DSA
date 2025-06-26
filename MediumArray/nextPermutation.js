@@ -23,7 +23,7 @@ function NextPermutation(arr, n) {
     return arr;
 }
 
-const arr = [ 5, 2, 6, 3, 4, 1];
+const arr = [ 5, 2, 6, 4, 3, 1];
 const n = arr.length;
 const Result = NextPermutation(arr, n);
 console.log(Result);                
