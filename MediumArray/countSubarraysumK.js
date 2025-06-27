@@ -1,48 +1,44 @@
-function CountSubarr(mat) {
-    let n = mat.length; 
-    let m = mat[0].length;
-    let top = 0;
-    let bottom = n - 1;
-    let left = 0;
-    let right = m - 1;
-    let ans = [];
+function printSpiral(mat) {
 
-    while (top <= bottom && left <= right) {
-        for (let i = left; i <= right; i++) {
-            ans.push(mat[top][i]);
-        }
-        top++;
+  let ans = [];
+  let n = mat.length;
+  let m = mat[0].length;
+  let top = 0, left = 0, bottom = n - 1, right = m - 1;
 
-        for (let i = top; i <= bottom; i++) {
-            ans.push(mat[i][right]);
-        }
-        right--;
+  while (top <= bottom && left <= right) {
+    for (let i = left; i <= right; i++)
+      ans.push(mat[top][i]);
+    top++;
+    for (let i = top; i <= bottom; i++)
+      ans.push(mat[i][right]);
+    right--;
 
-        if (top <= bottom) {
-            for (let i = right; i >= left; i--) {
-                ans.push(mat[bottom][i]);
-            }
-            bottom--;
-        }
-
-        if (left <= right) {
-            for (let i = bottom; i >= top; i--) {
-                ans.push(mat[i][left]);
-            }
-            left++;
-        }
+    if (top <= bottom) {
+      for (let i = right; i >= left; i--)
+       ans.push(mat[bottom][i]);
+      bottom--;
     }
+  
+    if (left <= right) {
+      for (let i = bottom; i >= top; i--)
+        ans.push(mat[i][left]);
 
-    return ans;
+      left++;
+    }
+  }
+  return ans;
 }
 
-const matrix = [
-    [1, 1, 1],
-    [1, 0, 1],
-    [1, 1, 1]
-];
 
-let ans = CountSubarr(matrix);
+let mat = [[1, 2, 3, 4],
+           [5, 6, 7, 8],
+	       [9, 10, 11, 12],
+		   [13, 14, 15, 16]];
+    
+let ans = printSpiral(mat);
 
-console.log("The Final matrix is:");
-console.log(ans.join(" "));
+for (let i = 0; i < ans.length; i++) {
+  console.log(ans[i] + " ");
+}
+
+console.log(); 
